@@ -17,11 +17,10 @@ public class PlayerMoveState : PlayerState
     {
         base.Update();
 
+        player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        if (xInput == 0)
             stateMachine.ChangeState(player.idleState);
-        }
     }
 
     public override void Exit()
