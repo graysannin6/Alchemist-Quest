@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d5738d234d2c044bb24b79ac506ccd8, type: 3}
   m_Name: Stardust
   m_EditorClassIdentifier: 
+  itemType: 1
   itemName: Stardust
   icon: {fileID: 999392976, guid: 9c7355b0cb8a5024bba44738f70d9e74, type: 3}

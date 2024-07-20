@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d5738d234d2c044bb24b79ac506ccd8, type: 3}
   m_Name: Savia
   m_EditorClassIdentifier: 
+  itemType: 1
   itemName: Savia Plant
   icon: {fileID: 657366318, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
