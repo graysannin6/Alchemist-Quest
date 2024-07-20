@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "nEW ItemData", menuName = "Data/Item")]
-public class ItemData : ScriptableObject
+public enum ItemType
 {
+    Equipment,
+    Material,
+    
+}
+
+[CreateAssetMenu(fileName = "new ItemData", menuName = "Data/Item")]
+public class ItemData : ScriptableObject
+{   
+    public ItemType itemType;
     public string itemName;
     public Sprite icon;
 }
