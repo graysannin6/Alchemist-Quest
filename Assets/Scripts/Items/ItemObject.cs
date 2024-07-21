@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemObject : MonoBehaviour
-{   
-    
+{
+
     [SerializeField] private ItemData itemData;
 
     public void OnValidate()
@@ -13,14 +13,20 @@ public class ItemObject : MonoBehaviour
         gameObject.name = "Item object - " + itemData.itemName;
     }
 
-    
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<Player>() != null)
+        /*if(collision.GetComponent<Player>() != null)
+        {
+            Inventory.instance.AddItem(itemData);
+            Destroy(gameObject);
+        }*/
+
+        if (collision.GetComponent<MouvementTestInventory>() != null)
         {
             Inventory.instance.AddItem(itemData);
             Destroy(gameObject);
         }
-    }    
+    }
 }
