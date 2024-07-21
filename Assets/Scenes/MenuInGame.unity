@@ -984,7 +984,7 @@ MonoBehaviour:
   inventoryItems: []
   stash: []
   inventorySlotParent: {fileID: 1212548808}
-  stashSlotParent: {fileID: 0}
+  stashSlotParent: {fileID: 1188315331}
 --- !u!4 &244346763
 Transform:
   m_ObjectHideFlags: 0
@@ -3223,7 +3223,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1842364865
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -2141142661, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
