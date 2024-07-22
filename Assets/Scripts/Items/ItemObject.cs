@@ -23,7 +23,7 @@ public class ItemObject : MonoBehaviour
         if (collision.GetComponent<MouvementTestInventory>() != null)
         {   
             Debug.Log("Item picked up" + itemData.itemName);
-            //Inventory.instance.AddItem(itemData);
+            Inventory.instance.AddItem(itemData);
             Destroy(gameObject);
         }
     }
