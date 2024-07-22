@@ -9,9 +9,14 @@ public class UI_ItemSlot : MonoBehaviour
 
     public InventoryItem item;
 
-    // Start is called before the first frame update
-    public void UpdateSlotUI(InventoryItem _newItem)
-    {
+
+    public void UpdateSlot(InventoryItem _newItem)
+
+    {   
+        item = _newItem;
+
+        itemImage.color = Color.white;
+
         if (item != null)
         {
             itemImage.sprite = item.data.icon;
