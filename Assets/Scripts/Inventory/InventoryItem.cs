@@ -13,6 +13,7 @@ public class InventoryItem
     public InventoryItem(ItemData _newItemData)
     {
         data = _newItemData;
+        AddStack();
     }
 
     public void AddStack() => stackSize++;
