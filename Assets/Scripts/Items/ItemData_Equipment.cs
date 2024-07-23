@@ -6,7 +6,7 @@ public enum EquipmentType
 {
     Weapon,
     Armor,
-    Accessory,
+    Consumable,
 }
 
 [CreateAssetMenu(fileName = "New Equipment Item", menuName = "Data/Equipment")]
