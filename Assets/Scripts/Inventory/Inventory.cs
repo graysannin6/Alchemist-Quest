@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
 
     public List <InventoryItem> equipment;
+    public List<ItemData> startingItems;
     public Dictionary<ItemData_Equipment, InventoryItem> equipmentDictionary;
 
     public List<InventoryItem> inventory;
@@ -19,11 +20,14 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Transform inventorySlotParent;
     [SerializeField] private Transform stashSlotParent;
     [SerializeField] private Transform equipmentSlotParent;
+    [SerializeField] private Transform statSlotParent;
+
 
 
     private UI_ItemSlot[] inventoryItemSlot;
     private UI_ItemSlot[] stashItemSlot;
     private UI_EquipmentSlot[] equipmentSlot;
+    private UI_StatSlot[] statSlot;
 
     private void Awake()
     {
@@ -52,6 +56,11 @@ public class Inventory : MonoBehaviour
         stashItemSlot = stashSlotParent.GetComponentsInChildren<UI_ItemSlot>();
 
         equipmentSlot = equipmentSlotParent.GetComponentsInChildren<UI_EquipmentSlot>();
+
+        statSlot = statSlotParent.GetComponentsInChildren<UI_StatSlot>();
+        AddStartingItems();
+
+
         
     }
 
@@ -84,7 +93,7 @@ public class Inventory : MonoBehaviour
         UpdateSlotUI();
     }
 
-    private void UnequipItem(ItemData_Equipment  itemToRemove)
+    public void UnequipItem(ItemData_Equipment  itemToRemove)
     {
         if (equipmentDictionary.TryGetValue(itemToRemove, out InventoryItem value))
         {
@@ -125,6 +134,11 @@ public class Inventory : MonoBehaviour
         {
             stashItemSlot[i].UpdateSlot(stash[i]);
         }
+
+        for (int i = 0; i < statSlot.Length; i++)
+        {
+            statSlot[i].UpdateStatValueUI();
+        }
     }
 
         public void AddItem(ItemData _item)
@@ -164,6 +178,14 @@ public class Inventory : MonoBehaviour
             InventoryItem newItem = new InventoryItem(_item);
             inventory.Add(newItem);
             inventoryDictionary.Add(_item, newItem);
+        }
+    }
+
+    private void AddStartingItems()
+    {
+        for (int i = 0; i < startingItems.Count; i++)
+        {
+            EquipItem(startingItems[i]);
         }
     }
 
@@ -229,4 +251,21 @@ public class Inventory : MonoBehaviour
         Debug.Log("Here is your Item" + _itemToCraft.name);
         return true;    
     }
+
+    public List<InventoryItem> GetEquipementList() => equipment;
+
+    public List<InventoryItem> GetStashList() => stash;
+
+    public ItemData_Equipment GetEquipment(EquipmentType _type)
+    {   
+        ItemData_Equipment equipedItem = null;
+        foreach (KeyValuePair<ItemData_Equipment, InventoryItem> item in equipmentDictionary)
+            {
+                if (item.Key.equipmentType == _type)
+                    equipedItem = item.Key;
+            }
+
+        return equipedItem;
+    }
+    
 }
