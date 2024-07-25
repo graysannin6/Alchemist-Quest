@@ -6,6 +6,7 @@ public enum EquipmentType
 {
     Weapon,
     Armor,
+    Shield,
     Consumable,
 }
 
@@ -14,6 +15,7 @@ public enum EquipmentType
 public class ItemData_Equipment : ItemData
 {
     public EquipmentType equipmentType;
+    public ItemEffect[] effects;	
 
     [Header("Major stats")]
     public int health;
@@ -29,8 +31,15 @@ public class ItemData_Equipment : ItemData
 
 
     [Header("Craft requirements")]
-
     public List<InventoryItem> craftingMaterials;
+
+    public void ItemEffect()
+    {
+        foreach (ItemEffect effect in effects)
+        {
+            effect.ExecuteItemEffect();
+        }
+    }
 
     public void AddModifiers()
     {
@@ -41,4 +50,6 @@ public class ItemData_Equipment : ItemData
     {
         // Aqui es donde se tiene que remover las stats segun lo que reciba del item en cuestion dentro de las DATAS
     }
+
+
 }
