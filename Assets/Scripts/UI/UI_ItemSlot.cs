@@ -3,12 +3,21 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler
+public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {   
     [SerializeField]private Image itemImage;
     [SerializeField]private TextMeshProUGUI itemText;
 
+    private UI ui;
     public InventoryItem item;
+
+    public int descriptionLength = 50;
+
+    private void Start()
+    {
+        ui = GetComponentInParent<UI>();
+    }
+    
 
 
     public void UpdateSlot(InventoryItem _newItem)
@@ -46,6 +55,24 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler
 
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {   
+        if (item == null)
+        {
+            return;
+        }
+        ui.itemToolTip.ShowToolTip(item.data as ItemData_Equipment);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {   
+        if (item == null)
+        {
+            return;
+        }
+        ui.itemToolTip.HideToolTip();
+    }
+
     public void CleanUpSlot()
     {
         item = null;
@@ -53,6 +80,6 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler
         itemImage.sprite = null;
         itemImage.color = Color.clear;
         itemText.text = "";
-        Debug.Log("Cleaned up slot");
+        
     }
 }
