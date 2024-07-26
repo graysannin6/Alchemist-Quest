@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
+using Cinemachine;
 public class PlayerDashState : PlayerState
 {
+
     public PlayerDashState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
     }
@@ -13,6 +15,8 @@ public class PlayerDashState : PlayerState
         base.Enter();
 
         stateTimer = player.dashDuration;
+
+        CinemachineShake.Instance.ShakeCamera(0.5f, 0.2f, 14f);
     }
 
     public override void Update()
@@ -23,6 +27,7 @@ public class PlayerDashState : PlayerState
             stateMachine.ChangeState(player.wallSlideState);
 
         player.SetVelocity(player.dashSpeed * player.dashDir, 0);
+
 
         if (stateTimer < 0)
             stateMachine.ChangeState(player.idleState);
