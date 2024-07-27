@@ -16,3 +16,11 @@ MonoBehaviour:
   itemName: Rusty_Sword
   icon: {fileID: -1550038187, guid: bdeaeacf91e805f449e7fa66d480d644, type: 3}
   equipmentType: 0
+  effects: []
+  health: 0
+  mana: 0
+  stamina: 0
+  damage: 5
+  attackSpeed: 0
+  critChance: 0
+  craftingMaterials: []

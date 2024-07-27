@@ -16,7 +16,8 @@ MonoBehaviour:
   itemName: GreenPotion
   icon: {fileID: 50426615, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
   equipmentType: 2
-  health: 0
+  effects: []
+  health: 20
   mana: 0
   stamina: 0
   damage: 0
