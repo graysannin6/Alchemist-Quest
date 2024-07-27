@@ -20,6 +20,16 @@ public class UI_CraftSlot : UI_ItemSlot
         item.data = _data;
         itemImage.sprite = _data.icon;
         itemText.text = _data.itemName;
+
+        if(itemText.text.Length > 13)
+        {
+            itemText.fontSize = itemText.fontSize * 0.7f;
+        }
+        else
+        {
+            itemText.fontSize = 24;
+
+        }
     }
 
     public override void OnPointerDown(PointerEventData eventData)
